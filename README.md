@@ -306,5 +306,6 @@ Possibilités d’amélioration :
 ## 📌 Auteur
 
 Projet réalisé dans le cadre d’un TP LangChain.
+KHALID NAITALI
 
 ---
