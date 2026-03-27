@@ -1,6 +1,6 @@
 # 🤖 AI Agents avec LangChain — Activité Pratique N°3
 
-## 👩‍🎓 Réalisé par
+## 👩‍🎓 Réalisé par : KHALID NAITALI
 
 * Étudiante en informatique / data / IA
 * Projet : Agents intelligents avec LangChain + RAG
@@ -306,6 +306,6 @@ Possibilités d’amélioration :
 ## 📌 Auteur
 
 Projet réalisé dans le cadre d’un TP LangChain.
-KHALID NAITALI
+
 
 ---
