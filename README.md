@@ -17,7 +17,6 @@ Le système combine :
 <p align="center">
   <img src="demo.png" width="900"/>
 </p>
-
 ---
 
 ## 🎯 Objectifs
