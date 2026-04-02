@@ -1,84 +1,79 @@
-# 🤖 AI Agents avec LangChain — Activité Pratique N°3
 
-## 👩‍🎓 Réalisé par : KHALID NAITALI
+# 🤖 Chatbot RAG avec LangChain & Streamlit
 
-* Étudiante en informatique / data / IA
-* Projet : Agents intelligents avec LangChain + RAG
+## 📌 Description
 
----
+Ce projet consiste en la création d’un **chatbot intelligent basé sur la technique RAG (Retrieval-Augmented Generation)** permettant de répondre à des questions à partir de documents locaux.
 
-## 📌 Objectif du projet
+Le système combine :
 
-Ce projet a pour objectif de :
-
-* Comprendre le fonctionnement des agents IA avec LangChain
-* Implémenter un agent simple
-* Ajouter une mémoire conversationnelle
-* Intégrer des outils (tools)
-* Utiliser des middlewares (prompt dynamique, gestion d’erreurs, etc.)
-* Développer un chatbot RAG (Retrieval-Augmented Generation)
-* Créer une interface utilisateur avec Streamlit
+* 🔍 Recherche d’information (FAISS)
+* 🧠 Modèle de langage (OpenAI)
+* 🖥️ Interface interactive (Streamlit)
 
 ---
 
-## 🧱 Structure du projet
+## 🎯 Objectifs
+
+* Charger et indexer des documents locaux
+* Transformer les documents en embeddings
+* Effectuer une recherche sémantique
+* Générer des réponses pertinentes avec un LLM
+* Offrir une interface utilisateur simple
+
+---
+
+## 🧱 Architecture du projet
 
 ```
-ai_agents_langchain_project/
+langchain_tp/
 │
-├── agent_simple.py        # Agent de base
-├── agent_memory.py        # Agent avec mémoire
-├── agent_tools.py         # Agent avec outils
-├── agent_middleware.py    # Agent avec middleware
-├── rag_chatbot.py         # RAG en console
-├── app.py                 # Interface Streamlit
+├── data/                  # Documents source (.txt)
 │
-├── data/
-│   └── cours_ia.txt       # Document pour le RAG
+├── src/
+│   ├── config.py         # Configuration (API keys, modèles)
+│   ├── rag.py            # Logique RAG (retriever + réponse)
+│   ├── tools.py          # Outils personnalisés
+│   ├── middleware.py     # Gestion contexte utilisateur
+│   └── simple_agent.py   # Agent simple
 │
-├── requirements.txt       # Dépendances
-├── .env                   # Clés API
-└── README.md              # Documentation
+├── streamlit_app.py      # Interface principale
+├── requirements.txt      # Dépendances
+└── README.md             # Documentation
 ```
 
 ---
 
 ## ⚙️ Installation
 
-### 1. Cloner ou extraire le projet
+### 1️⃣ Cloner le projet
 
 ```bash
-cd ai_agents_langchain_project
+git clone <repo_url>
+cd langchain_tp
 ```
 
----
-
-### 2. Créer un environnement virtuel
+### 2️⃣ Créer un environnement virtuel
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
----
+### 3️⃣ Activer l’environnement
 
-### 3. Activer l’environnement
-
-#### Windows (cmd) :
+➡️ Windows:
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
-#### Windows (PowerShell) :
+➡️ Mac/Linux:
 
-```powershell
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-.\venv\Scripts\Activate.ps1
+```bash
+source .venv/bin/activate
 ```
 
----
-
-### 4. Installer les dépendances
+### 4️⃣ Installer les dépendances
 
 ```bash
 pip install -r requirements.txt
@@ -86,73 +81,39 @@ pip install -r requirements.txt
 
 ---
 
-## 🔑 Configuration des clés API
+## 🔑 Configuration
 
-Créer un fichier `.env` :
+Créer un fichier `.env` à la racine du projet :
 
 ```env
-OPENAI_API_KEY=ta_cle_openai
-TAVILY_API_KEY=ta_cle_tavily
+OPENAI_API_KEY=your_api_key_here
+OPENAI_MODEL_SIMPLE=gpt-4o-mini
+OPENAI_MODEL_ADVANCED=gpt-4o-mini
+EMBEDDING_MODEL=text-embedding-3-small
 ```
 
 ---
 
-### 🔹 OpenAI
+## 📂 Ajouter les documents
 
-👉 https://platform.openai.com/api-keys
+Place tes fichiers `.txt` dans le dossier :
 
-### 🔹 Tavily
+```
+data/
+```
 
-👉 https://app.tavily.com
+Exemple :
 
----
-
-## 🚀 Exécution des scripts
-
-### ▶️ Agent simple
-
-```bash
-python agent_simple.py
+```
+data/cours_ia.txt
 ```
 
 ---
 
-### ▶️ Agent avec mémoire
+## ▶️ Lancer l’application
 
 ```bash
-python agent_memory.py
-```
-
----
-
-### ▶️ Agent avec tools
-
-```bash
-python agent_tools.py
-```
-
----
-
-### ▶️ Agent avec middleware
-
-```bash
-python agent_middleware.py
-```
-
----
-
-### ▶️ RAG (console)
-
-```bash
-python rag_chatbot.py
-```
-
----
-
-### ▶️ Interface Streamlit
-
-```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 Puis ouvrir dans le navigateur :
@@ -163,149 +124,82 @@ http://localhost:8501
 
 ---
 
-## 🧠 Explication des modules
+## 🧠 Fonctionnement
 
-### 🔹 Agent simple
-
-Un agent de base qui répond à des questions sans outils ni mémoire.
-
----
-
-### 🔹 Mémoire
-
-Permet à l’agent de garder le contexte de la conversation.
-
-Exemple :
-
-* "Je m'appelle Fatima"
-* "Comment je m'appelle ?" → réponse correcte
-
----
-
-### 🔹 Tools
-
-Ajout de capacités externes :
-
-* DuckDuckGo → recherche web
-* Tavily → recherche avancée
-* Python REPL → calculs
-
----
-
-### 🔹 Middleware
-
-Permet de contrôler le comportement de l’agent :
-
-* Prompt dynamique
-* Gestion des erreurs
-* Guardrails (contrôle des réponses)
-* Human-in-the-loop
-
----
-
-### 🔹 RAG
-
-Le chatbot utilise un document local pour répondre :
-
-1. Chargement du document
+1. Chargement des documents
 2. Découpage en chunks
-3. Création des embeddings
+3. Transformation en embeddings
 4. Stockage dans FAISS
-5. Recherche pertinente
-6. Génération de réponse
+5. Recherche des passages pertinents
+6. Génération de réponse avec LLM
 
 ---
 
-### 🔹 Streamlit
+## 🔍 Technologies utilisées
 
-Interface web interactive permettant de :
-
-* Poser des questions
-* Voir les réponses
-* Visualiser les documents utilisés
+* Python 🐍
+* Streamlit 🖥️
+* LangChain 🔗
+* FAISS 🔍
+* OpenAI API 🤖
 
 ---
 
-## 🧪 Exemple d’utilisation
+## 📊 Exemple d’utilisation
 
-Question :
+💬 Question :
 
 ```
-Quelle est la différence entre machine learning et deep learning ?
+Qu’est-ce que l’intelligence artificielle ?
 ```
 
-Réponse :
-→ basée sur le document `cours_ia.txt`
+🤖 Réponse :
+
+```
+L’intelligence artificielle est un domaine...
+```
 
 ---
 
-## ⚠️ Problèmes fréquents
+## ⚠️ Problèmes fréquents & solutions
 
-### ❌ Erreur activation venv
+### ❌ Erreur : ModuleNotFoundError
 
-➡ utiliser cmd ou changer ExecutionPolicy
-
----
-
-### ❌ Clé API invalide
-
-➡ vérifier `.env`
-
----
-
-### ❌ FAISS erreur
+✔️ Solution :
 
 ```bash
-pip install faiss-cpu
+pip install -r requirements.txt
 ```
 
 ---
 
-### ❌ Tavily ne fonctionne pas
+### ❌ Erreur : API Key
 
-➡ vérifier `TAVILY_API_KEY`
+✔️ Vérifier :
 
----
-
-## 📊 Résultat attendu
-
-✔ Agent simple fonctionnel
-✔ Mémoire opérationnelle
-✔ Tools intégrés
-✔ Middleware utilisé
-✔ RAG fonctionnel
-✔ Interface Streamlit
+* fichier `.env`
+* clé valide OpenAI
 
 ---
 
-## 🎯 Conclusion
+### ❌ Erreur Streamlit session_state
 
-Ce projet démontre comment :
-
-* Construire des agents intelligents
-* Intégrer des outils externes
-* Gérer le contexte et les erreurs
-* Implémenter un système RAG
-* Déployer une interface utilisateur simple
-
-LangChain permet ainsi de créer des applications IA avancées de manière modulaire et extensible.
+✔️ Ne pas utiliser `st.session_state` dans les fichiers backend directement
 
 ---
 
-## ⭐ Bonus
+## 🚀 Améliorations possibles
 
-Possibilités d’amélioration :
-
-* Ajouter PDF comme source RAG
-* Ajouter base de données
-* Ajouter chat multi-utilisateurs
-* Déployer sur le cloud
-
----
-
-## 📌 Auteur
-
-Projet réalisé dans le cadre d’un TP LangChain.
-
+* Ajouter une base PDF
+* Ajouter mémoire conversationnelle
+* Interface UI améliorée
+* Ajout d’un agent intelligent
+* Support multi-documents
 
 ---
+
+## 👨‍💻 Auteur
+
+Projet réalisé dans le cadre d’un TP LangChain
+🎓 Génie Informatique – Intelligence Artificielle
+
