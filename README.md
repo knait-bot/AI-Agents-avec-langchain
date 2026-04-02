@@ -1,4 +1,3 @@
-
 # 🤖 Chatbot RAG avec LangChain & Streamlit
 
 ## 📌 Description
@@ -10,6 +9,14 @@ Le système combine :
 * 🔍 Recherche d’information (FAISS)
 * 🧠 Modèle de langage (OpenAI)
 * 🖥️ Interface interactive (Streamlit)
+
+---
+
+## 📸 Aperçu de l'application
+
+<p align="center">
+  <img src="images/demo.png" width="900"/>
+</p>
 
 ---
 
@@ -25,21 +32,24 @@ Le système combine :
 
 ## 🧱 Architecture du projet
 
-```
+```bash
 langchain_tp/
 │
-├── data/                  # Documents source (.txt)
+├── data/                  
+│   └── cours_ia.txt
 │
 ├── src/
-│   ├── config.py         # Configuration (API keys, modèles)
-│   ├── rag.py            # Logique RAG (retriever + réponse)
-│   ├── tools.py          # Outils personnalisés
-│   ├── middleware.py     # Gestion contexte utilisateur
-│   └── simple_agent.py   # Agent simple
+│   ├── config.py         
+│   ├── rag.py            
+│   ├── tools.py          
+│   ├── middleware.py     
+│   └── simple_agent.py   
 │
-├── streamlit_app.py      # Interface principale
-├── requirements.txt      # Dépendances
-└── README.md             # Documentation
+├── streamlit_app.py      
+├── requirements.txt      
+├── README.md             
+└── images/
+    └── demo.png
 ```
 
 ---
@@ -98,13 +108,13 @@ EMBEDDING_MODEL=text-embedding-3-small
 
 Place tes fichiers `.txt` dans le dossier :
 
-```
+```bash
 data/
 ```
 
 Exemple :
 
-```
+```bash
 data/cours_ia.txt
 ```
 
@@ -116,7 +126,7 @@ data/cours_ia.txt
 streamlit run streamlit_app.py
 ```
 
-Puis ouvrir dans le navigateur :
+Puis ouvrir :
 
 ```
 http://localhost:8501
@@ -150,22 +160,20 @@ http://localhost:8501
 💬 Question :
 
 ```
-Qu’est-ce que l’intelligence artificielle ?
+Qu’est-ce que le RAG ?
 ```
 
 🤖 Réponse :
 
 ```
-L’intelligence artificielle est un domaine...
+Le RAG est une méthode qui combine recherche d’information et génération de texte...
 ```
 
 ---
 
 ## ⚠️ Problèmes fréquents & solutions
 
-### ❌ Erreur : ModuleNotFoundError
-
-✔️ Solution :
+### ❌ ModuleNotFoundError
 
 ```bash
 pip install -r requirements.txt
@@ -173,28 +181,26 @@ pip install -r requirements.txt
 
 ---
 
-### ❌ Erreur : API Key
+### ❌ API Key invalide
 
-✔️ Vérifier :
-
-* fichier `.env`
-* clé valide OpenAI
+* Vérifier `.env`
+* Vérifier la clé OpenAI
 
 ---
 
 ### ❌ Erreur Streamlit session_state
 
-✔️ Ne pas utiliser `st.session_state` dans les fichiers backend directement
+👉 Ne pas utiliser `st.session_state` dans les fichiers backend directement
 
 ---
 
 ## 🚀 Améliorations possibles
 
-* Ajouter une base PDF
-* Ajouter mémoire conversationnelle
-* Interface UI améliorée
+* Support PDF
+* Mémoire conversationnelle
+* UI améliorée
 * Ajout d’un agent intelligent
-* Support multi-documents
+* Multi-documents
 
 ---
 
@@ -202,4 +208,13 @@ pip install -r requirements.txt
 
 Projet réalisé dans le cadre d’un TP LangChain
 🎓 Génie Informatique – Intelligence Artificielle
+
+---
+
+## 📄 Licence
+
+Usage pédagogique uniquement.
+
+---
+
 
