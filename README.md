@@ -15,7 +15,7 @@ Le système combine :
 ## 📸 Aperçu de l'application
 
 <p align="center">
-  <img src="images/demo.png" width="900"/>
+  <img src="demo.png" width="900"/>
 </p>
 
 ---
