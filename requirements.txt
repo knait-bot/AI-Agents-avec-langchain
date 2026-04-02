@@ -1,0 +1,9 @@
+langchain==0.1.20
+langchain-openai==0.1.7
+langchain-community==0.0.38
+langchain-experimental==0.0.58
+streamlit==1.33.0
+python-dotenv==1.0.1
+tiktoken==0.7.0
+pydantic<2
+duckduckgo-search==5.3.1b1

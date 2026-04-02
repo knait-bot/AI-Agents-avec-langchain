@@ -1,0 +1,8 @@
+LangChain est un framework permettant de construire des applications basées sur les modèles de langage.
+Un agent peut utiliser un modèle de langage, des outils, une mémoire et des règles métier.
+Un système RAG signifie Retrieval-Augmented Generation : on récupère des documents pertinents avant de générer la réponse.
+FAISS est souvent utilisé comme base vectorielle locale.
+Streamlit permet de créer rapidement une interface web pour un chatbot.
+DuckDuckGo peut servir à faire de la recherche web.
+Tavily est un autre outil de recherche web utilisé dans certains agents.
+PythonREPLTool permet d'exécuter du code Python simple.
